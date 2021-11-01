@@ -16,7 +16,7 @@ Match::Match(int id,int idstade, QString dates ,QString sport ,int nbrp)
   this->idstade=idstade;
   this->dates=dates;
   this->sport=sport;
-    this->nbrp=nbrp;
+  this->nbrp=nbrp;
 
 
 
@@ -73,13 +73,20 @@ QSqlQueryModel *Match::rechercher(QString rech)
     model->setQuery("select * from match where id LIKE '"+rech+"%' or idstade LIKE '"+rech+"%'");
     return model;
 }
-/*bool matchs::modifier(QString id)
+
+bool Match::modifier(int id ,int idstade ,QString dates,QString sport,int nbrp)
 {
     QSqlQuery query;
+    query.prepare("UPDATE match SET id= :id,idstade= :idstade,dates = :dates,sport = :sport,nbrp = :nbrp  WHERE id= :id ");
+    query.bindValue(":id",id);
+    query.bindValue(":idstade",idstade);
+    query.bindValue(":dates",dates);
+    query.bindValue(":sport",sport);
+    query.bindValue(":nbrp",nbrp);
 
-  query.prepare("UPDATE match set idstade='"+idstade+"',dates='"+dates+"',sport='"+sport+"' WHERE id LIKE '"+id+"' ");
-   return query.exec();
-    }*/
+
+    return    query.exec();
+}
 QSqlQueryModel * Match::tri()
 {
     QSqlQueryModel * model= new QSqlQueryModel();

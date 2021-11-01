@@ -20,7 +20,8 @@ class Match
     bool ajouter();
     QSqlQueryModel * afficher();
      bool supprimer(QString);
-     bool modifier(QString);
+     bool modifier(int,int,QString,QString,int);
+
     QSqlQueryModel * rechercher(QString);
         QSqlQueryModel * tri();
 
