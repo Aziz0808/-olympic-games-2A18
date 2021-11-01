@@ -21,6 +21,8 @@ private slots:
 
     void on_ajouter_clicked();
 
+
+
 private:
     Ui::MainWindow *ui;
     Match tmpmatchs;

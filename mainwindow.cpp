@@ -46,6 +46,3 @@ QMessageBox::information(nullptr, QObject::tr("Ajouter un match"),
                               "Click Cancel to exit."), QMessageBox::Cancel);
 }
 
-
-
-

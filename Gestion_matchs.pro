@@ -2,8 +2,10 @@
 QT       += core gui sql
 QT += core gui  multimedia multimediawidgets
 QT       +=multimedia
+
 QT       += core gui
 QT += network
+
 
 QT += network
 
