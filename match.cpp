@@ -33,7 +33,7 @@ bool Match::ajouter()
 {
 QSqlQuery query;
 
-query.prepare("INSERT INTO match (id, idstade, dates, sport ,nbrp) "
+query.prepare("INSERT INTO MATCH (id, idstade, dates, sport ,nbrp) "
                     "VALUES (:id, :idstade, :dates, :sport , :nbrp)");
 query.bindValue(":id", id);
 query.bindValue(":idstade", idstade);
@@ -63,7 +63,7 @@ bool Match::supprimer(QString id)
 {
 QSqlQuery query;
 
-query.prepare("Delete from match where ID = :id ");
+query.prepare("Delete from MATCH where ID = :id ");
 query.bindValue(":id", id);
 return    query.exec();
 }
