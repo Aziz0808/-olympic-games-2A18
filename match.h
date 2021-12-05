@@ -15,6 +15,11 @@ class Match
     QString get_dates();
     QString get_sport();
     int get_nbrp();
+    void setid(int);
+    void setidstade(int);
+    void setdates(QString);
+    void setsport(QString);
+    void setnbrp(int);
 
 
     bool ajouter();
@@ -23,7 +28,9 @@ class Match
      bool modifier(int,int,QString,QString,int);
 
     QSqlQueryModel * rechercher(QString);
-        QSqlQueryModel * tri();
+        QSqlQueryModel * triID();
+        QSqlQueryModel * triIDSTADE();
+
 
 private:
         int id,idstade,nbrp;

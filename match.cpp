@@ -26,6 +26,11 @@ int Match::get_idstade(){return idstade;}
 QString Match::get_dates(){return dates;}
 QString Match::get_sport(){return sport;}
 int Match::get_nbrp(){return nbrp;}
+void Match::setid(int id){this->id=id;}
+void Match::setidstade(int idstade){this->idstade=idstade;}
+void Match::setdates(QString dates){this->dates=dates;}
+void Match::setsport(QString){this->sport=sport;}
+void Match::setnbrp(int){this->nbrp=nbrp;}
 
 
 
@@ -33,9 +38,9 @@ bool Match::ajouter()
 {
 QSqlQuery query;
 
-query.prepare("INSERT INTO MATCH (id, idstade, dates, sport ,nbrp) "
-                    "VALUES (:id, :idstade, :dates, :sport , :nbrp)");
-query.bindValue(":id", id);
+query.prepare("INSERT INTO MATCH (idm, idstade, dates, sport ,nbrp) "
+                    "VALUES (:idm, :idstade, :dates, :sport , :nbrp)");
+query.bindValue(":idm", id);
 query.bindValue(":idstade", idstade);
 query.bindValue(":dates", dates);
 query.bindValue(":sport", sport);
@@ -48,7 +53,7 @@ return    query.exec();
 
 QSqlQueryModel * Match::afficher()
 {QSqlQueryModel * model= new QSqlQueryModel();
-model->setQuery("select * from match");
+model->setQuery("select * from MATCH");
 model->setHeaderData(0, Qt::Horizontal, QObject::tr("ID"));
 model->setHeaderData(1, Qt::Horizontal, QObject::tr("IDSTADE "));
 model->setHeaderData(2, Qt::Horizontal, QObject::tr("DATES"));
@@ -63,22 +68,22 @@ bool Match::supprimer(QString id)
 {
 QSqlQuery query;
 
-query.prepare("Delete from MATCH where ID = :id ");
-query.bindValue(":id", id);
+query.prepare("Delete from MATCH where IDM = :idm ");
+query.bindValue(":idm", id);
 return    query.exec();
 }
 QSqlQueryModel *Match::rechercher(QString rech)
 {
     QSqlQueryModel * model= new QSqlQueryModel();
-    model->setQuery("select * from match where id LIKE '"+rech+"%' or idstade LIKE '"+rech+"%'");
+    model->setQuery("select * from MATCH where id LIKE '"+rech+"%' or idstade LIKE '"+rech+"%' ");
     return model;
 }
 
 bool Match::modifier(int id ,int idstade ,QString dates,QString sport,int nbrp)
 {
     QSqlQuery query;
-    query.prepare("UPDATE match SET id= :id,idstade= :idstade,dates = :dates,sport = :sport,nbrp = :nbrp  WHERE id= :id ");
-    query.bindValue(":id",id);
+    query.prepare("UPDATE MATCH SET idm= :id,idstade= :idstade,dates = :dates,sport = :sport,nbrp = :nbrp  WHERE id= :id ");
+    query.bindValue(":idm",id);
     query.bindValue(":idstade",idstade);
     query.bindValue(":dates",dates);
     query.bindValue(":sport",sport);
@@ -87,16 +92,26 @@ bool Match::modifier(int id ,int idstade ,QString dates,QString sport,int nbrp)
 
     return    query.exec();
 }
-QSqlQueryModel * Match::tri()
+QSqlQueryModel * Match::triID()
 {
     QSqlQueryModel * model= new QSqlQueryModel();
 
-    model->setQuery("select * from match ORDER BY id ");
-    model->setHeaderData(0, Qt::Horizontal, QObject::tr("ID"));
-    model->setHeaderData(1, Qt::Horizontal, QObject::tr("IDSTADE "));
-    model->setHeaderData(2, Qt::Horizontal, QObject::tr("DATES"));
-    model->setHeaderData(3, Qt::Horizontal, QObject::tr("SPORT"));
-    model->setHeaderData(4, Qt::Horizontal, QObject::tr("NBRP"));
+    model->setQuery("SELECT * from MATCH ORDER BY id ");
+
+
+
+
+
+
+
+        return model;
+}
+QSqlQueryModel * Match::triIDSTADE()
+{
+    QSqlQueryModel * model= new QSqlQueryModel();
+
+    model->setQuery("SELECT * from MATCH ORDER BY idstade ");
+
 
 
 

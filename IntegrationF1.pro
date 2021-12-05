@@ -1,13 +1,4 @@
-
-QT       += core gui sql
-QT += core gui  multimedia multimediawidgets
-QT       +=multimedia
-
-QT       += core gui
-QT += network
-
-
-QT += network
+QT       += core gui sql printsupport multimedia multimediawidgets
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -28,15 +19,25 @@ SOURCES += \
     connection.cpp \
     main.cpp \
     mainwindow.cpp \
-    match.cpp
+    match.cpp \
+    qcustomplot.cpp \
+    stade.cpp \
+    window.cpp \
+    windowmatch.cpp
 
 HEADERS += \
     connection.h \
     mainwindow.h \
-    match.h
+    match.h \
+    qcustomplot.h \
+    stade.h \
+    window.h \
+    windowmatch.h
 
 FORMS += \
-    mainwindow.ui
+    mainwindow.ui \
+    window.ui \
+    windowmatch.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
